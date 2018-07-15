@@ -7,6 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SeleccionTransferenciaComponent implements OnInit {
 
+  listaIngredientes = [1,2,3,4,5,6,7,8];
   constructor() { }
 
   ngOnInit() {
