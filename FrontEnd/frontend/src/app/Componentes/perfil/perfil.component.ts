@@ -7,6 +7,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PerfilComponent implements OnInit {
 
+  listaPeticiones = [1,2];
+  listaPetBoton = [1,2];
+
   constructor() { }
 
   ngOnInit() {
