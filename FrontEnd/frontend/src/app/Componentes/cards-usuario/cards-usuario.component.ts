@@ -1,5 +1,6 @@
-import {Component, EventEmitter, OnInit} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit} from '@angular/core';
 import {PageEvent} from "@angular/material";
+import {UsuarioService} from "../../Servicios/usuario.service";
 
 @Component({
   selector: 'app-cards-usuario',
@@ -8,16 +9,23 @@ import {PageEvent} from "@angular/material";
 })
 export class CardsUsuarioComponent implements OnInit {
 
-  listaUsuarios = [1,2,3,4,5,6,7,8,9,10];
+  listaUsuarios = [];
   numeroItems = 4;
   cantidadPaginas;
   listaAMostrar;
   paginaActual: number = 1;
 
-  constructor() { }
+  constructor(private _usuarioService: UsuarioService) { }
+
   ngOnInit() {
-    this.obtenerListaAMostrar();
-    this.obtenerCantidadPaginas();
+    this._usuarioService.getUsuarios().subscribe(
+      (result: any []) => {
+        this.listaUsuarios = result;
+        console.log(this.listaUsuarios);
+        this.obtenerCantidadPaginas();
+        this.obtenerListaAMostrar();
+      }
+    );
   }
 
   obtenerCantidadPaginas() {
@@ -39,5 +47,4 @@ export class CardsUsuarioComponent implements OnInit {
     this.paginaActual -= 1;
     this.obtenerListaAMostrar()
   }
-
 }

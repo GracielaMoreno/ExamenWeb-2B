@@ -20,6 +20,7 @@ import {MatIconModule} from '@angular/material/icon';
 import { PeticionTransferenciaComponent } from './Componentes/peticion-transferencia/peticion-transferencia.component';
 import { SeleccionTransferenciaComponent } from './Componentes/seleccion-transferencia/seleccion-transferencia.component';
 import { PerfilComponent } from './Componentes/perfil/perfil.component';
+import {HttpClientModule} from "@angular/common/http";
 
 @NgModule({
   declarations: [
@@ -44,7 +45,8 @@ import { PerfilComponent } from './Componentes/perfil/perfil.component';
     MatGridListModule,
     MatButtonModule,
     MatPaginatorModule,
-    MatIconModule
+    MatIconModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

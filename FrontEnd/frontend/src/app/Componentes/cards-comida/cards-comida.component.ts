@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
+import {ComidaService} from "../../Servicios/comida.service";
 
 @Component({
   selector: 'app-cards-comida',
@@ -7,27 +8,33 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CardsComidaComponent implements OnInit {
 
-  listaUsuarios = [1,2,3,4,5,6,7,8,9,10];
+  listaComidas = [];
   numeroItems = 2;
   cantidadPaginas;
   listaAMostrar;
   paginaActual: number = 1;
 
-  constructor() { }
+  constructor(private _comidaService: ComidaService) { }
+
   ngOnInit() {
-    this.obtenerListaAMostrar();
-    this.obtenerCantidadPaginas();
+    this._comidaService.getComidas().subscribe(
+      (result: any[]) => {
+        this.listaComidas = result;
+        this.obtenerListaAMostrar();
+        this.obtenerCantidadPaginas();
+      }
+    );
   }
 
   obtenerCantidadPaginas() {
-    this.cantidadPaginas = this.listaUsuarios.length/this.numeroItems;
+    this.cantidadPaginas = this.listaComidas.length/this.numeroItems;
     if (!Number.isInteger(this.cantidadPaginas)) {
       this.cantidadPaginas = Number.parseInt(this.cantidadPaginas + 1);
     }
   }
 
   obtenerListaAMostrar() {
-    this.listaAMostrar = this.listaUsuarios.slice(this.paginaActual*this.numeroItems - this.numeroItems, this.paginaActual*this.numeroItems)
+    this.listaAMostrar = this.listaComidas.slice(this.paginaActual*this.numeroItems - this.numeroItems, this.paginaActual*this.numeroItems)
   }
 
   next() {

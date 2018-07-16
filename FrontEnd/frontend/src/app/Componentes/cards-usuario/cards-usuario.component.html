@@ -6,10 +6,12 @@
     <br>
     <div class="row">
       <div *ngFor="let usuario of listaAMostrar" class="col-sm-3" style="width: 100%">
-        <mat-card>
-          <h5>Nombre Apellido</h5>
-          <img mat-card-image="" src="http://www.glitztvla.com/wp-content/uploads/2016/03/6-caminos-para-volverte-una-persona-menos-toxica.jpg" alt="Usuario Foto">
-          <button mat-stroked-button color="primary">Visitar</button>
+        <mat-card style="height: 100%">
+          <h5>{{usuario.nombre}}</h5>
+          <img style="width: 100%; max-width: 300px;" src="{{usuario.urlImg}}" alt="Usuario Foto">
+          <mat-card-actions>
+            <button mat-stroked-button color="primary">Visitar</button>
+          </mat-card-actions>
         </mat-card>
         <br>
       </div>

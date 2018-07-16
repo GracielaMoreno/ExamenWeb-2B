@@ -9,12 +9,11 @@
         <mat-card>
           <div class="row">
             <div class="col-sm-6">
-              <label>Datos</label>
-              <br>
-              <label>Datos</label>
+              <h5>{{ingrediente.nombreIngrediente}}</h5>
+              <label>Cant: {{ingrediente.cantidad}}</label>
             </div>
             <div class="col-sm-6">
-              <img src="https://d25rq8gxcq0p71.cloudfront.net/language-guide/758/pepperoni%20pizza.jpg" alt="Usuario Foto">
+              <img src="{{ingrediente.urlImg}}" alt="Usuario Foto">
             </div>
           </div>
           <button mat-stroked-button color="primary">Pedir Transfrencia</button>

@@ -18,11 +18,11 @@ export class ComidaService {
 
   getComidas() {
     let header = ComidaService.getCommonHeaders();
-    return this.http.get("http://localhost:1337/medicamento",{headers: header});
+    return this.http.get("http://localhost:1337/comida",{headers: header});
   }
 
   getComidasPorNombre(nombre) {
     let header = ComidaService.getCommonHeaders();
-    return this.http.get("http://localhost:1337/medicamento/" + nombre ,{headers: header});
+    return this.http.get("http://localhost:1337/comida/" + nombre ,{headers: header});
   }
 }

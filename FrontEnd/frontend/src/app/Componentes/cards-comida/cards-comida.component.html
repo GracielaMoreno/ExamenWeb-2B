@@ -8,13 +8,14 @@
       <div *ngFor="let comida of listaAMostrar" class="col-sm-6" style="width: 100%">
         <mat-card>
           <div class="row">
-            <div class="col-sm-3">
-              <img src="https://d25rq8gxcq0p71.cloudfront.net/language-guide/758/pepperoni%20pizza.jpg" alt="Usuario Foto">
+            <div class="col-sm-4">
+              <img src="{{comida.urlImg}}" alt="Usuario Foto">
             </div>
-            <div class="col-sm-9">
-              <h5>Nombre Apellido</h5>
-              <label>Datos</label>
-              <label>Datos</label>
+            <div class="col-sm-8">
+              <h5>{{comida.nombrePlato}}</h5>
+              <label>Descripción: {{comida.descripcionPlato}}</label>
+              <br>
+              <label>Nacionalidad: {{comida.nacionalidad}}</label>
             </div>
           </div>
           <!--button mat-stroked-button color="primary">Visitar</button!-->
