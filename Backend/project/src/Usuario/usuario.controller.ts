@@ -36,6 +36,15 @@ export class UsuarioController {
         }
     }
 
+    @Get('/:paramBusqueda')
+    async buscar(
+        @Param() paramParams,
+        @Res() response
+    ) {
+        const usuarios = await this._usuarioService.buscar(paramParams.paramBusqueda);
+        return response.send(usuarios);
+    }
+
     @Post()
     async crearUsuariosBase() {
         const usuarios = this._usuarioService.crearUsuario();

@@ -9,7 +9,7 @@ import {UsuarioService} from "../../Servicios/usuario.service";
 })
 export class CardsUsuarioComponent implements OnInit {
 
-  listaUsuarios = [];
+  @Input() listaUsuarios = [];
   numeroItems = 4;
   cantidadPaginas;
   listaAMostrar;
@@ -18,6 +18,7 @@ export class CardsUsuarioComponent implements OnInit {
   constructor(private _usuarioService: UsuarioService) { }
 
   ngOnInit() {
+
     this._usuarioService.getUsuarios().subscribe(
       (result: any []) => {
         this.listaUsuarios = result;

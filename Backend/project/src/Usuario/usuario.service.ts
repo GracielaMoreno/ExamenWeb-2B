@@ -1,7 +1,7 @@
 import {Injectable} from "@nestjs/common";
 import {InjectRepository} from "@nestjs/typeorm";
 import {UsuarioEntity} from "./usuario.entity";
-import {Repository} from "typeorm";
+import {Like, Repository} from "typeorm";
 
 @Injectable()
 export class UsuarioService {
@@ -41,5 +41,11 @@ export class UsuarioService {
         return await this.usuarioRepository.
         createQueryBuilder("usuario").where("usuario.nombre = :nombre", { nombre: nombreArgumento }).getOne();
     }
+
+    async buscar(parametroBusqueda) {
+
+        return await this.usuarioRepository.find({ nombre: Like("%" + parametroBusqueda + "%") });
+    }
+
 
 }

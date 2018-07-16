@@ -25,4 +25,9 @@ export class UsuarioService {
     let header = UsuarioService.getCommonHeaders();
     return this.http.get("http://localhost:1337/usuario/" + nombre + "/" + contrasena ,{headers: header});
   }
+
+  getUsuariosBusqueda(parametroBusqueda) {
+    let header = UsuarioService.getCommonHeaders();
+    return this.http.get("http://localhost:1337/usuario/" + parametroBusqueda ,{headers: header});
+  }
 }
