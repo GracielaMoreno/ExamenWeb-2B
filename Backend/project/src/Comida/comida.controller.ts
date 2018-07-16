@@ -1,9 +1,6 @@
 import {Body, Controller, Get, Param, Post, Put, Req, Res} from "@nestjs/common";
 import {ComidaService} from "./comida.service";
-import {COMIDA_SCHEMA} from "./comida.schema";
-import {GeneralPipe} from "../general.pipe";
-import {ComidaClass} from "./comida.class";
-import {NoEncontradoException} from "../exceptions/noEncontrado.exception";
+import {ComidaEntity} from "./comida.entity";
 
 @Controller('Comida')
 export class ComidaController {
@@ -11,23 +8,21 @@ export class ComidaController {
     constructor(private _comidaService: ComidaService) {}
 
     @Get()
-    listarTodos(
+    async listarTodos(
         @Res() response,
         @Req() request,
     ) {
-        const comidas = this._comidaService.mostrarTodos();
+        const comidas = await this._comidaService.traerTodos();
         return response.send(comidas);
     }
 
     @Post()
-    crearComida(
-        @Body(new GeneralPipe(COMIDA_SCHEMA)) comidaArgumento
-    ): ComidaClass[] {
-        const comida = comidaArgumento;
-        return this._comidaService.agregarComida(comida);
+    async crearComidaBase() {
+        const comidas = this._comidaService.crearComidas();
+        return comidas;
     }
 
-    @Get('/:id')
+    /*@Get('/:id')
     obtenerUno(
         @Param() paramParams,
         @Res() response
@@ -60,5 +55,5 @@ export class ComidaController {
                 4
             )
         }
-    }
+    }*/
 }
