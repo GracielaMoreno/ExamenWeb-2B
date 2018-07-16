@@ -52,6 +52,10 @@ export class ComidaService {
         return await this.comidaRepository.find({ nombrePlato: Like("%" + parametroBusqueda + "%") });
     }
 
+    async traerComidaPorUsuario(usuarioID): Promise<ComidaEntity[]> {
+        return await this.comidaRepository.find({where: {usuarioId: usuarioID}});
+    }
+
     /*agregarComida(comida: ComidaClass): ComidaClass[] {
         this.arregloComidas.push(comida);
         return this.arregloComidas;

@@ -25,6 +25,15 @@ export class ComidaController {
         return response.send(usuarios);
     }
 
+    @Get('/porUsuario/:idUsuario')
+    async obtenerComidaPorUsuario(
+        @Param() paramParams,
+        @Res() response
+    ) {
+        const usuarios = await this._comidaService.traerComidaPorUsuario(paramParams.idUsuario);
+        return response.send(usuarios);
+    }
+
     @Post()
     async crearComidaBase() {
         const comidas = this._comidaService.crearComidas();
