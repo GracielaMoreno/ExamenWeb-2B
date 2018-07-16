@@ -56,6 +56,10 @@ export class IngredienteService {
         return await this.ingredienteRepository.find({ nombreIngrediente: Like("%" + parametroBusqueda + "%") });
     }
 
+    async traerIngredientePorComida(comidaID): Promise<IngredienteEntity[]> {
+        return await this.ingredienteRepository.find({where: {comidaId: comidaID}});
+    }
+
     /*agregarIngrediente(ingrediente: IngredienteClass): IngredienteClass[] {
         this.arregloIngredientes.push(ingrediente);
         return this.arregloIngredientes;
