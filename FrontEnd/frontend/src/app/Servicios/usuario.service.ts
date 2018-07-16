@@ -21,8 +21,8 @@ export class UsuarioService {
     return this.http.get("http://localhost:1337/usuario",{headers: header});
   }
 
-  getUsuariosPorNombre(nombre) {
+  getUsuariosPorNombre(nombre, contrasena) {
     let header = UsuarioService.getCommonHeaders();
-    return this.http.get("http://localhost:1337/usuario/" + nombre ,{headers: header});
+    return this.http.get("http://localhost:1337/usuario/" + nombre + "/" + contrasena ,{headers: header});
   }
 }

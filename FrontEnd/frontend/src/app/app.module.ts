@@ -21,6 +21,9 @@ import { PeticionTransferenciaComponent } from './Componentes/peticion-transfere
 import { SeleccionTransferenciaComponent } from './Componentes/seleccion-transferencia/seleccion-transferencia.component';
 import { PerfilComponent } from './Componentes/perfil/perfil.component';
 import {HttpClientModule} from "@angular/common/http";
+import {FormsModule} from "@angular/forms";
+import {Router, RouterModule} from "@angular/router";
+import {routes} from "./app.routes";
 
 @NgModule({
   declarations: [
@@ -37,6 +40,9 @@ import {HttpClientModule} from "@angular/common/http";
   ],
   imports: [
     BrowserModule,
+    RouterModule.forRoot(routes,
+      {
+        useHash: true}),
     MatFormFieldModule,
     MatInputModule,
     BrowserAnimationsModule,
@@ -46,7 +52,8 @@ import {HttpClientModule} from "@angular/common/http";
     MatButtonModule,
     MatPaginatorModule,
     MatIconModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

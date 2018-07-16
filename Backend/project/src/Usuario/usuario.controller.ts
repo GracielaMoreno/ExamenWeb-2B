@@ -1,6 +1,7 @@
 import {Body, Controller, Get, Param, Post, Put, Req, Res} from "@nestjs/common";
 import {UsuarioService} from "./usuario.service";
 import {UsuarioEntity} from "./usuario.entity";
+import {NoEncontradoException} from "../exceptions/noEncontrado.exception";
 
 @Controller('usuario')
 export class UsuarioController {
@@ -14,6 +15,25 @@ export class UsuarioController {
     ) {
         const usuarios = await this._usuarioService.traerTodos();
         return response.send(usuarios);
+    }
+
+    @Get('/:nombreArgumento/:contrasena')
+    async buscarPorNombre(
+        @Param() paramParams,
+        @Res() response
+    ) {
+        let usuario = await this._usuarioService.obtenerUsuarioPorNombre(paramParams.nombreArgumento);
+
+        if (usuario.contrasena === paramParams.contrasena) {
+            return response.send(
+                {respuesta: 'Aceptado'});
+        } else {
+            throw new NoEncontradoException(
+                'No coinciden los datos',
+                'error',
+                4
+            )
+        }
     }
 
     @Post()

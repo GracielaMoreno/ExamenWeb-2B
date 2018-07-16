@@ -36,4 +36,10 @@ export class UsuarioService {
     async traerTodos(): Promise<UsuarioEntity[]> {
         return await this.usuarioRepository.find();
     }
+
+    async obtenerUsuarioPorNombre(nombreArgumento) {
+        return await this.usuarioRepository.
+        createQueryBuilder("usuario").where("usuario.nombre = :nombre", { nombre: nombreArgumento }).getOne();
+    }
+
 }

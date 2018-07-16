@@ -13,15 +13,15 @@
       <mat-card-content>
         <div>
           <mat-form-field style="width: 100%">
-            <input matInput placeholder="Usuario">
+            <input matInput placeholder="Usuario" name="nombre" [(ngModel)]="nombre">
           </mat-form-field>
           <br>
           <mat-form-field style="width: 100%">
-            <input matInput placeholder="Contraseña">
+            <input matInput placeholder="Contraseña" name="contrasena" [(ngModel)]="contrasena">
           </mat-form-field>
         </div>
       </mat-card-content>
-      <button mat-raised-button color="primary" style="box-sizing: content-box; text-align: center" >Login</button>
+      <button mat-raised-button color="primary" style="box-sizing: content-box; text-align: center" (click)="ingresar()">Login</button>
     </mat-card>
   </div>
   <div class="col-sm-4"></div>
