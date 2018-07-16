@@ -1,7 +1,7 @@
 import { Injectable} from "@nestjs/common";
 import {InjectRepository} from "@nestjs/typeorm";
 import {ComidaEntity} from "./comida.entity";
-import {Repository} from "typeorm";
+import {Like, Repository} from "typeorm";
 
 
 @Injectable()
@@ -40,6 +40,11 @@ export class ComidaService {
 
     async traerTodos(): Promise<ComidaEntity[]> {
         return await this.comidaRepository.find();
+    }
+
+    async buscar(parametroBusqueda) {
+
+        return await this.comidaRepository.find({ nombrePlato: Like("%" + parametroBusqueda + "%") });
     }
 
     /*agregarComida(comida: ComidaClass): ComidaClass[] {

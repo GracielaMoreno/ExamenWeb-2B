@@ -31,12 +31,12 @@
     <h3>Usuarios</h3>
     <br>
     <div class="row">
-      <div *ngFor="let usuario of listaAMostrarUsuarios" class="col-sm-3" style="width: 100%">
+      <div *ngFor="let usuario of usuario_listaAMostrar" class="col-sm-3" style="width: 100%">
         <mat-card style="height: 100%">
           <h5>{{usuario.nombre}}</h5>
           <img style="width: 100%; max-width: 300px;" src="{{usuario.urlImg}}" alt="Usuario Foto">
           <mat-card-actions>
-            <button mat-stroked-button color="primary">Visitar</button>
+            <button style="width: 100%" mat-stroked-button color="primary">Visitar</button>
           </mat-card-actions>
         </mat-card>
         <br>
@@ -45,18 +45,21 @@
     <br>
     <div class="row">
       <div class="col-sm-3">
-        <button mat-raised-button color="primary" (click)="prev()" [disabled]="paginaActualU ===1">Anterior</button>
+        <button mat-raised-button color="primary" (click)="prevUsuario()" [disabled]="usuario_paginaActual ===1">Anterior</button>
       </div>
       <div class="col-sm-6"></div>
       <div class="col-sm-3">
-        <button mat-raised-button color="primary" style="width: 100%;" (click)="next()" [disabled]="paginaActualU===cantidadPaginasU">Siguiente</button>
+        <button mat-raised-button color="primary" style="width: 100%;" (click)="nextUsuario()" [disabled]="usuario_paginaActual===usuario_cantidadPaginas">Siguiente</button>
       </div>
     </div>
   </div>
   <div class="col-sm-1"></div>
 </div>
 <br>
-
 <!--app-cards-usuario></app-cards-usuario!-->
-<app-cards-comida></app-cards-comida>
-<app-cards-ingrediente></app-cards-ingrediente>
+
+<!------------------CARDS COMIDA CARDS COMIDA CARDS COMIDA CARDS COMIDA ----------------------->
+<!--app-cards-comida></app-cards-comida!-->
+
+<!------------------CARDS INGREDIENTE CARDS INGREDIENTE CARDS INGREDIENTE CARDS INGREDIENTE ----------------------->
+<!--app-cards-ingrediente></app-cards-ingrediente!-->

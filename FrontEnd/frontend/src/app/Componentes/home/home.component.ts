@@ -12,53 +12,67 @@ import {UsuarioService} from "../../Servicios/usuario.service";
 export class HomeComponent implements OnInit {
 
   datoABuscar;
+
+  //Usuario
   listaUsuarios = [];
-  numeroItemsU = 4;
-  cantidadPaginasU;
-  listaAMostrarUsuarios;
-  paginaActualU: number = 1;
+  usuario_numeroItems = 4;
+  usuario_cantidadPaginas;
+  usuario_listaAMostrar;
+  usuario_paginaActual: number = 1;
+
+  //Usuario
+  listaPrueba = [];
+  p_numeroItems = 3;
+  p_cantidadPaginas;
+  p_listaAMostrar;
+  p_paginaActual: number = 1;
 
   constructor(private _usuarioService: UsuarioService) { }
 
   ngOnInit() {
-    /*this._usuarioService.getUsuarios().subscribe(
-      (result: any []) => {
-        this.listaUsuarios = result;
-        console.log(this.listaUsuarios);
-        this.obtenerCantidadPaginas();
-        this.obtenerListaAMostrar();
-      }
-    );*/
   }
 
   cargarDatosbusqueda() {
+
+    //Usuarios
     this._usuarioService.getUsuariosBusqueda(this.datoABuscar).subscribe(
       (result: any []) => {
         this.listaUsuarios = result;
-        console.log(this.listaUsuarios);
-        this.obtenerCantidadPaginas();
-        this.obtenerListaAMostrar();
+        this.usuario_cantidadPaginas = this.obtenerCantidadPaginas(this.listaUsuarios,this.usuario_numeroItems);
+        this.usuario_listaAMostrar = this.obtenerListaAMostrar(this.listaUsuarios, this.usuario_paginaActual, this.usuario_numeroItems);
+      }
+    );
+
+    this._usuarioService.getUsuariosBusqueda(this.datoABuscar).subscribe(
+      (result: any []) => {
+        this.listaPrueba = result;
+        this.p_cantidadPaginas = this.obtenerCantidadPaginas(this.listaPrueba,this.p_numeroItems);
+        this.p_listaAMostrar = this.obtenerListaAMostrar(this.listaPrueba, this.p_paginaActual, this.p_numeroItems);
       }
     );
   }
 
-  obtenerCantidadPaginas() {
-    this.cantidadPaginasU = this.listaUsuarios.length/this.numeroItemsU;
-    if (!Number.isInteger(this.cantidadPaginasU)) {
-      this.cantidadPaginasU = Number.parseInt(this.cantidadPaginasU + 1);
+  obtenerCantidadPaginas(lista: any [], numeroItems): number {
+
+    let cantidadPaginas: number = lista.length/numeroItems;
+    if (!Number.isInteger(cantidadPaginas)) {
+      cantidadPaginas = cantidadPaginas + 1;
+      cantidadPaginas = Number.parseInt(cantidadPaginas.toString());
     }
+    return cantidadPaginas;
   }
 
-  obtenerListaAMostrar() {
-    this.listaAMostrarUsuarios = this.listaUsuarios.slice(this.paginaActualU*this.numeroItemsU - this.numeroItemsU, this.paginaActualU*this.numeroItemsU)
+  obtenerListaAMostrar(listaUsuarios: any [], paginaActual, numeroItems): any [] {
+    let lista = listaUsuarios.slice(paginaActual*numeroItems - numeroItems, paginaActual*numeroItems);
+    return lista;
   }
 
-  next() {
-    this.paginaActualU += 1;
-    this.obtenerListaAMostrar()
+  nextUsuario() {
+    this.usuario_paginaActual += 1;
+    this.usuario_listaAMostrar = this.obtenerListaAMostrar(this.listaUsuarios, this.usuario_paginaActual, this.usuario_numeroItems)
   }
-  prev() {
-    this.paginaActualU -= 1;
-    this.obtenerListaAMostrar()
+  prevUsuario() {
+    this.usuario_paginaActual -= 1;
+    this.usuario_listaAMostrar = this.obtenerListaAMostrar(this.listaUsuarios, this.usuario_paginaActual, this.usuario_numeroItems)
   }
 }

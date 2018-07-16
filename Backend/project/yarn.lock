@@ -2405,7 +2405,7 @@ memoizee@^0.3.9:
     es6-weak-map "~0.1.4"
     event-emitter "~0.3.4"
     lru-queue "0.1"
-    next-tick "~0.2.2"
+    nextUsuario-tick "~0.2.2"
     timers-ext "0.1"
 
 merge-descriptors@1.0.1:
@@ -2502,11 +2502,11 @@ negotiator@0.6.1:
 
 next-tick@1:
   version "1.0.0"
-  resolved "https://registry.yarnpkg.com/next-tick/-/next-tick-1.0.0.tgz#ca86d1fe8828169b0120208e3dc8424b9db8342c"
+  resolved "https://registry.yarnpkg.com/nextUsuario-tick/-/nextUsuario-tick-1.0.0.tgz#ca86d1fe8828169b0120208e3dc8424b9db8342c"
 
 next-tick@~0.2.2:
   version "0.2.2"
-  resolved "https://registry.yarnpkg.com/next-tick/-/next-tick-0.2.2.tgz#75da4a927ee5887e39065880065b7336413b310d"
+  resolved "https://registry.yarnpkg.com/nextUsuario-tick/-/nextUsuario-tick-0.2.2.tgz#75da4a927ee5887e39065880065b7336413b310d"
 
 node-int64@^0.4.0:
   version "0.4.0"
@@ -3531,7 +3531,7 @@ timers-ext@0.1:
   resolved "https://registry.yarnpkg.com/timers-ext/-/timers-ext-0.1.2.tgz#61cc47a76c1abd3195f14527f978d58ae94c5204"
   dependencies:
     es5-ext "~0.10.14"
-    next-tick "1"
+    nextUsuario-tick "1"
 
 tmpl@1.0.x:
   version "1.0.4"

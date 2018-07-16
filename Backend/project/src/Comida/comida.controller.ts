@@ -16,6 +16,15 @@ export class ComidaController {
         return response.send(comidas);
     }
 
+    @Get('/:paramBusqueda')
+    async buscar(
+        @Param() paramParams,
+        @Res() response
+    ) {
+        const usuarios = await this._comidaService.buscar(paramParams.paramBusqueda);
+        return response.send(usuarios);
+    }
+
     @Post()
     async crearComidaBase() {
         const comidas = this._comidaService.crearComidas();

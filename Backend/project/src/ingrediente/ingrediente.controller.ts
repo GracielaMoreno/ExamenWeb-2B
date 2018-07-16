@@ -16,6 +16,15 @@ export class IngredienteController {
         return response.send(ingredientes);
     }
 
+    @Get('/:paramBusqueda')
+    async buscar(
+        @Param() paramParams,
+        @Res() response
+    ) {
+        const usuarios = await this._ingredienteService.buscar(paramParams.paramBusqueda);
+        return response.send(usuarios);
+    }
+
     @Post()
     async crearIngredientesBase() {
         const ingredientes = this._ingredienteService.crearIngredientes();

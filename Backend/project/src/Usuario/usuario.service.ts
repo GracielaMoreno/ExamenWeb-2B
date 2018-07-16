@@ -47,5 +47,4 @@ export class UsuarioService {
         return await this.usuarioRepository.find({ nombre: Like("%" + parametroBusqueda + "%") });
     }
 
-
 }

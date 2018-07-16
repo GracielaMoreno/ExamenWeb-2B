@@ -1,7 +1,7 @@
 import {Injectable} from "@nestjs/common";
 import {InjectRepository} from "@nestjs/typeorm";
 import {IngredienteEntity} from "./ingrediente.entity";
-import {Repository} from "typeorm";
+import {Like, Repository} from "typeorm";
 
 @Injectable()
 export class IngredienteService {
@@ -46,6 +46,11 @@ export class IngredienteService {
 
     async traerTodos(): Promise<IngredienteEntity[]> {
         return await this.ingredienteRepository.find();
+    }
+
+    async buscar(parametroBusqueda) {
+
+        return await this.ingredienteRepository.find({ nombreIngrediente: Like("%" + parametroBusqueda + "%") });
     }
 
     /*agregarIngrediente(ingrediente: IngredienteClass): IngredienteClass[] {
