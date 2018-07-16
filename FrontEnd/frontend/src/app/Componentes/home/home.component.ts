@@ -20,14 +20,23 @@ export class HomeComponent implements OnInit {
   usuario_listaAMostrar;
   usuario_paginaActual: number = 1;
 
-  //Usuario
-  listaPrueba = [];
-  p_numeroItems = 3;
-  p_cantidadPaginas;
-  p_listaAMostrar;
-  p_paginaActual: number = 1;
+  //Comida
+  listaComidas = [];
+  comida_numeroItems = 2;
+  comida_cantidadPaginas;
+  comida_listaAMostrar;
+  comida_paginaActual: number = 1;
 
-  constructor(private _usuarioService: UsuarioService) { }
+  //Ingrediente
+  listaIngredientes = [];
+  ingrediente_numeroItems = 2;
+  ingrediente_cantidadPaginas;
+  ingrediente_listaAMostrar;
+  ingrediente_paginaActual: number = 1;
+
+  constructor(private _usuarioService: UsuarioService,
+              private _comidaServcie: ComidaService,
+              private _ingredienteService: IngredienteService) { }
 
   ngOnInit() {
   }
@@ -42,12 +51,20 @@ export class HomeComponent implements OnInit {
         this.usuario_listaAMostrar = this.obtenerListaAMostrar(this.listaUsuarios, this.usuario_paginaActual, this.usuario_numeroItems);
       }
     );
-
-    this._usuarioService.getUsuariosBusqueda(this.datoABuscar).subscribe(
+    //Comida
+    this._comidaServcie.getComidaBusqueda(this.datoABuscar).subscribe(
       (result: any []) => {
-        this.listaPrueba = result;
-        this.p_cantidadPaginas = this.obtenerCantidadPaginas(this.listaPrueba,this.p_numeroItems);
-        this.p_listaAMostrar = this.obtenerListaAMostrar(this.listaPrueba, this.p_paginaActual, this.p_numeroItems);
+        this.listaComidas = result;
+        this.comida_cantidadPaginas =  this.obtenerCantidadPaginas(this.listaComidas, this.comida_numeroItems);
+        this.comida_listaAMostrar = this.obtenerListaAMostrar(this.listaComidas, this.comida_paginaActual, this.comida_numeroItems);
+    }
+    );
+    //Ingrediente
+    this._ingredienteService.getIngredienteBusqueda(this.datoABuscar).subscribe(
+      (result: any []) => {
+        this.listaIngredientes = result;
+        this.ingrediente_cantidadPaginas = this.obtenerCantidadPaginas(this.listaIngredientes, this.ingrediente_numeroItems);
+        this.ingrediente_listaAMostrar = this.obtenerListaAMostrar(this.listaIngredientes, this.ingrediente_paginaActual, this.ingrediente_numeroItems);
       }
     );
   }
@@ -74,5 +91,23 @@ export class HomeComponent implements OnInit {
   prevUsuario() {
     this.usuario_paginaActual -= 1;
     this.usuario_listaAMostrar = this.obtenerListaAMostrar(this.listaUsuarios, this.usuario_paginaActual, this.usuario_numeroItems)
+  }
+
+  nextComida() {
+    this.comida_paginaActual += 1;
+    this.comida_listaAMostrar = this.obtenerListaAMostrar(this.listaComidas, this.comida_paginaActual, this.comida_numeroItems)
+  }
+  prevComida() {
+    this.comida_paginaActual -= 1;
+    this.comida_listaAMostrar = this.obtenerListaAMostrar(this.listaComidas, this.comida_paginaActual, this.comida_numeroItems)
+  }
+
+  nextIngrediente() {
+    this.ingrediente_paginaActual += 1;
+    this.ingrediente_listaAMostrar = this.obtenerListaAMostrar(this.listaIngredientes, this.ingrediente_paginaActual, this.ingrediente_numeroItems);
+  }
+  prevIngrediente() {
+    this.ingrediente_paginaActual -= 1;
+    this.ingrediente_listaAMostrar = this.obtenerListaAMostrar(this.listaIngredientes, this.ingrediente_paginaActual, this.ingrediente_numeroItems);
   }
 }

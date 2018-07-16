@@ -1,5 +1,6 @@
 import {Injectable} from "@angular/core";
 import {HttpClient, HttpHeaders} from "@angular/common/http";
+import {UsuarioService} from "./usuario.service";
 
 @Injectable()
 export class ComidaService {
@@ -24,5 +25,10 @@ export class ComidaService {
   getComidasPorNombre(nombre) {
     let header = ComidaService.getCommonHeaders();
     return this.http.get("http://localhost:1337/comida/" + nombre ,{headers: header});
+  }
+
+  getComidaBusqueda(parametroBusqueda) {
+    let header = ComidaService.getCommonHeaders();
+    return this.http.get("http://localhost:1337/comida/" + parametroBusqueda ,{headers: header});
   }
 }

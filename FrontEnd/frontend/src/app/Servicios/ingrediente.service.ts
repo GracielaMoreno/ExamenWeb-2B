@@ -1,5 +1,6 @@
 import {Injectable} from "@angular/core";
 import {HttpClient, HttpHeaders} from "@angular/common/http";
+import {UsuarioService} from "./usuario.service";
 
 @Injectable()
 export class IngredienteService {
@@ -24,5 +25,10 @@ export class IngredienteService {
   getIngredientesPorId(Id) {
     let header = IngredienteService.getCommonHeaders();
     return this.http.get("http://localhost:1337/ingrediente/" + Id ,{headers: header});
+  }
+
+  getIngredienteBusqueda(parametroBusqueda) {
+    let header = UsuarioService.getCommonHeaders();
+    return this.http.get("http://localhost:1337/ingrediente/" + parametroBusqueda ,{headers: header});
   }
 }
