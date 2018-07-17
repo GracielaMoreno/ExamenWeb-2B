@@ -31,9 +31,8 @@ export class LoginComponent implements OnInit {
         console.log(this.respuesta);
 
         if (this.respuesta.respuesta === 'Aceptado') {
-          const url = ['/home'];
+          const url = ['/home', this.respuesta.id];
           this._router.navigate(url);
-          console.log('Bieeen!!');
         }else {
           console.log('Ñoooo!!');
         }

@@ -29,8 +29,8 @@ export class IngredienteService {
     let header = UsuarioService.getCommonHeaders();
     return this.http.get("http://localhost:1337/ingrediente/porComida/" + idComida ,{headers: header});
   }
-  getIngredientesPorId(Id) {
+  getIngredientePorId(Id) {
     let header = IngredienteService.getCommonHeaders();
-    return this.http.get("http://localhost:1337/ingrediente/" + Id ,{headers: header});
+    return this.http.get("http://localhost:1337/ingrediente/por/id/" + Id ,{headers: header});
   }
 }

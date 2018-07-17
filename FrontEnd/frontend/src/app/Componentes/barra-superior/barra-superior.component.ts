@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 
 @Component({
   selector: 'app-barra-superior',
@@ -6,6 +6,9 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./barra-superior.component.css']
 })
 export class BarraSuperiorComponent implements OnInit {
+
+  @Input() nombreUsuario;
+  @Input() imgUsuario;
 
   constructor() { }
 

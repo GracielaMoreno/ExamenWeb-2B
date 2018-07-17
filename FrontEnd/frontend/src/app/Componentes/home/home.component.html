@@ -1,4 +1,4 @@
-<app-barra-superior></app-barra-superior>
+<app-barra-superior [imgUsuario]="usuarioActual?.urlImg" [nombreUsuario]="usuarioActual?.nombre"></app-barra-superior>
 <br>
 <div class="row">
   <div class="col-sm-2"></div>
@@ -118,7 +118,7 @@
               <img style=" width: 100%; max-width: 400px;" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSDBVlYWFoyYUgo29IPKCyEQa4rqCUFqlUuoQ4Aautiu__yrX96" alt="Usuario Foto">
             </div>
           </div>
-          <button mat-stroked-button color="primary">Pedir Transfrencia</button>
+          <button mat-stroked-button color="primary" (click)="irASeleccionTransferencia(ingrediente.id)">Pedir Transfrencia</button>
         </mat-card>
         <br>
       </div>

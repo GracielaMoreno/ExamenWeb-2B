@@ -33,7 +33,8 @@ export class UsuarioController {
 
         if (usuario.contrasena === paramParams.contrasena) {
             return response.send(
-                {respuesta: 'Aceptado'});
+                {respuesta: 'Aceptado',
+                id: usuario.id });
         } else {
             throw new NoEncontradoException(
                 'No coinciden los datos',

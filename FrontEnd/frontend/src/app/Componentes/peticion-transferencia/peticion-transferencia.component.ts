@@ -3,7 +3,7 @@ import {ActivatedRoute} from "@angular/router";
 import {ComidaService} from "../../Servicios/comida.service";
 import {UsuarioService} from "../../Servicios/usuario.service";
 import {IngredienteService} from "../../Servicios/ingrediente.service";
-import {st} from "@angular/core/src/render3";
+import {Usuario} from "../../Interfaces/usuario";
 
 @Component({
   selector: 'app-peticion-transferencia',
@@ -13,10 +13,10 @@ import {st} from "@angular/core/src/render3";
 })
 export class PeticionTransferenciaComponent implements OnInit {
 
-  nombre = "May";
   usuario: Usuario;
   listaComida = [];
   listaIngredientes = [];
+  usuarioActual: Usuario;
 
   constructor(private _activatedRoute: ActivatedRoute,
               private _comidaService: ComidaService,
@@ -25,6 +25,7 @@ export class PeticionTransferenciaComponent implements OnInit {
   ) {
     this._activatedRoute.params.subscribe(
       params =>{
+        this.getUsuarioActualPorId(params['idUsuarioActual']);
         this.getUsuarioPorId(params['idUsuario']);
         this.getComidaPorUsuario(params['idUsuario']);
       });
@@ -35,6 +36,13 @@ export class PeticionTransferenciaComponent implements OnInit {
     this._usuarioService.getUsuarioPorId(idUsuario).subscribe(
       (result: any) => {
         this.usuario =  result[0];
+      }
+    )
+  }
+  getUsuarioActualPorId(idUsuario) {
+    this._usuarioService.getUsuarioPorId(idUsuario).subscribe(
+      (result: any) => {
+        this.usuarioActual =  result[0];
       }
     )
   }
@@ -53,11 +61,4 @@ export class PeticionTransferenciaComponent implements OnInit {
       }
     )
   }
-}
-
-interface Usuario  {
-  id: number,
-  nombre: string,
-  contrasena: string,
-  urlImg: string
 }

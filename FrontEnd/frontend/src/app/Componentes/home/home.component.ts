@@ -2,7 +2,8 @@ import {Component, Input, OnInit} from '@angular/core';
 import {ComidaService} from "../../Servicios/comida.service";
 import {IngredienteService} from "../../Servicios/ingrediente.service";
 import {UsuarioService} from "../../Servicios/usuario.service";
-import {Router} from "@angular/router";
+import {ActivatedRoute, Router} from "@angular/router";
+import {Usuario} from "../../Interfaces/usuario";
 
 @Component({
   selector: 'app-home',
@@ -13,6 +14,7 @@ import {Router} from "@angular/router";
 export class HomeComponent implements OnInit {
 
   datoABuscar;
+  usuarioActual: Usuario;
 
   //Usuario
   listaUsuarios = [];
@@ -38,9 +40,23 @@ export class HomeComponent implements OnInit {
   constructor(private _usuarioService: UsuarioService,
               private _comidaServcie: ComidaService,
               private _ingredienteService: IngredienteService,
-              private _router: Router) { }
+              private _router: Router,
+              private _activatedRoute: ActivatedRoute
+  ) {
+    this._activatedRoute.params.subscribe(
+      params =>{
+        this.getUsuarioPorId(params['idUsuarioActual']);
+      });
+  }
 
   ngOnInit() {
+  }
+  getUsuarioPorId(idUsuario) {
+    this._usuarioService.getUsuarioPorId(idUsuario).subscribe(
+      (result: any) => {
+        this.usuarioActual =  result[0];
+      }
+    )
   }
 
   cargarDatosbusqueda() {
@@ -114,7 +130,20 @@ export class HomeComponent implements OnInit {
   }
 
   irAPeticionesDeTransferencia(idUsuario: string) {
-    const url = ['/petTransf', idUsuario];
-    this._router.navigate(url);
+    this._activatedRoute.params.subscribe(
+      params =>{
+        const url = ['/petTransf', params['idUsuarioActual'] ,idUsuario];
+        this._router.navigate(url);
+      }
+    );
+  }
+
+  irASeleccionTransferencia(idIngrediente: string) {
+    this._activatedRoute.params.subscribe(
+      params =>{
+        const url = ['/selecTransf', params['idUsuarioActual'],idIngrediente];
+        this._router.navigate(url);
+      }
+    );
   }
 }

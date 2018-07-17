@@ -30,8 +30,16 @@ export class IngredienteController {
         @Param() paramParams,
         @Res() response
     ) {
-        const usuarios = await this._ingredienteService.traerIngredientePorComida(paramParams.idComida);
-        return response.send(usuarios);
+        const ingredientes = await this._ingredienteService.traerIngredientePorComida(paramParams.idComida);
+        return response.send(ingredientes);
+    }
+    @Get('por/id/:idIngrediente')
+    async obtenerIngredientePorId(
+        @Param() paramParams,
+        @Res() response
+    ) {
+        const ingrediente = await this._ingredienteService.traerIngredientePorId(paramParams.idIngrediente);
+        return response.send(ingrediente);
     }
 
     @Post()

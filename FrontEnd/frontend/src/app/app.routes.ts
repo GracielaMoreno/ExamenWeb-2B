@@ -7,19 +7,19 @@ import {PerfilComponent} from "./Componentes/perfil/perfil.component";
 
 export const routes: Routes = [
   {
-    path: 'home',
-    component: HomeComponent},
-  {
     path: 'login',
     component: LoginComponent},
   {
-    path: 'petTransf/:idUsuario',
+    path: 'home/:idUsuarioActual',
+    component: HomeComponent},
+  {
+    path: 'petTransf/:idUsuarioActual/:idUsuario',
     component: PeticionTransferenciaComponent},
   {
-    path: 'selecTransf',
+    path: 'selecTransf/:idUsuarioActual/:idIngrediente',
     component: SeleccionTransferenciaComponent},
   {
-    path: 'perfil',
+    path: 'perfil/:idUsuarioActual',
     component: PerfilComponent}
   /*{
     path: 'modeloPaciente/:idPaciente/modeloMedicamento/:idMedicamento',
