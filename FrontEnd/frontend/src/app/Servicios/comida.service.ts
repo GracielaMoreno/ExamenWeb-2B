@@ -21,14 +21,19 @@ export class ComidaService {
     let header = ComidaService.getCommonHeaders();
     return this.http.get("http://localhost:1337/comida",{headers: header});
   }
+  getComidaBusqueda(parametroBusqueda) {
+    let header = ComidaService.getCommonHeaders();
+    return this.http.get("http://localhost:1337/comida/" + parametroBusqueda ,{headers: header});
+  }
+  getComidasporUsuario(idUsuario) {
+    let header = ComidaService.getCommonHeaders();
+    return this.http.get("http://localhost:1337/comida/porUsuario/" + idUsuario ,{headers: header});
+  }
 
   getComidasPorNombre(nombre) {
     let header = ComidaService.getCommonHeaders();
     return this.http.get("http://localhost:1337/comida/" + nombre ,{headers: header});
   }
 
-  getComidaBusqueda(parametroBusqueda) {
-    let header = ComidaService.getCommonHeaders();
-    return this.http.get("http://localhost:1337/comida/" + parametroBusqueda ,{headers: header});
-  }
+
 }

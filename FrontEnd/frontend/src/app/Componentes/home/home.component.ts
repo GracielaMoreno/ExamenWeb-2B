@@ -2,6 +2,7 @@ import {Component, Input, OnInit} from '@angular/core';
 import {ComidaService} from "../../Servicios/comida.service";
 import {IngredienteService} from "../../Servicios/ingrediente.service";
 import {UsuarioService} from "../../Servicios/usuario.service";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-home',
@@ -29,14 +30,15 @@ export class HomeComponent implements OnInit {
 
   //Ingrediente
   listaIngredientes = [];
-  ingrediente_numeroItems = 2;
+  ingrediente_numeroItems = 4;
   ingrediente_cantidadPaginas;
   ingrediente_listaAMostrar;
   ingrediente_paginaActual: number = 1;
 
   constructor(private _usuarioService: UsuarioService,
               private _comidaServcie: ComidaService,
-              private _ingredienteService: IngredienteService) { }
+              private _ingredienteService: IngredienteService,
+              private _router: Router) { }
 
   ngOnInit() {
   }
@@ -109,5 +111,10 @@ export class HomeComponent implements OnInit {
   prevIngrediente() {
     this.ingrediente_paginaActual -= 1;
     this.ingrediente_listaAMostrar = this.obtenerListaAMostrar(this.listaIngredientes, this.ingrediente_paginaActual, this.ingrediente_numeroItems);
+  }
+
+  irAPeticionesDeTransferencia(idUsuario: string) {
+    const url = ['/petTransf', idUsuario];
+    this._router.navigate(url);
   }
 }

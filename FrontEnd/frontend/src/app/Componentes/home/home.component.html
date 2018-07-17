@@ -36,7 +36,7 @@
           <h5>{{usuario.nombre}}</h5>
           <img style="width: 100%; max-width: 300px;" src="{{usuario.urlImg}}" alt="Usuario Foto">
           <mat-card-actions>
-            <button style="width: 100%" mat-stroked-button color="primary">Visitar</button>
+            <button style="width: 100%" mat-stroked-button color="primary" (click)="irAPeticionesDeTransferencia(usuario.id)">Visitar</button>
           </mat-card-actions>
         </mat-card>
         <br>

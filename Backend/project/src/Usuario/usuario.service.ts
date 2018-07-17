@@ -47,4 +47,7 @@ export class UsuarioService {
         return await this.usuarioRepository.find({ nombre: Like("%" + parametroBusqueda + "%") });
     }
 
+    async obtenerUsuarioPorId(idUsuario) {
+        return await this.usuarioRepository.find({where: {id: idUsuario}})
+    }
 }

@@ -21,14 +21,16 @@ export class IngredienteService {
     let header = IngredienteService.getCommonHeaders();
     return this.http.get("http://localhost:1337/ingrediente",{headers: header});
   }
-
-  getIngredientesPorId(Id) {
-    let header = IngredienteService.getCommonHeaders();
-    return this.http.get("http://localhost:1337/ingrediente/" + Id ,{headers: header});
-  }
-
   getIngredienteBusqueda(parametroBusqueda) {
     let header = UsuarioService.getCommonHeaders();
     return this.http.get("http://localhost:1337/ingrediente/" + parametroBusqueda ,{headers: header});
+  }
+  getIngredientePorComida(idComida) {
+    let header = UsuarioService.getCommonHeaders();
+    return this.http.get("http://localhost:1337/ingrediente/porComida/" + idComida ,{headers: header});
+  }
+  getIngredientesPorId(Id) {
+    let header = IngredienteService.getCommonHeaders();
+    return this.http.get("http://localhost:1337/ingrediente/" + Id ,{headers: header});
   }
 }

@@ -13,7 +13,7 @@ export const routes: Routes = [
     path: 'login',
     component: LoginComponent},
   {
-    path: 'petTransf',
+    path: 'petTransf/:idUsuario',
     component: PeticionTransferenciaComponent},
   {
     path: 'selecTransf',

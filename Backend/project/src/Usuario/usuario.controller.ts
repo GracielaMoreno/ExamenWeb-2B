@@ -16,7 +16,14 @@ export class UsuarioController {
         const usuarios = await this._usuarioService.traerTodos();
         return response.send(usuarios);
     }
-
+    @Get('/:paramBusqueda')
+    async buscar(
+        @Param() paramParams,
+        @Res() response
+    ) {
+        const usuarios = await this._usuarioService.buscar(paramParams.paramBusqueda);
+        return response.send(usuarios);
+    }
     @Get('/:nombreArgumento/:contrasena')
     async buscarPorNombre(
         @Param() paramParams,
@@ -35,16 +42,14 @@ export class UsuarioController {
             )
         }
     }
-
-    @Get('/:paramBusqueda')
-    async buscar(
+    @Get('por/id/:idUsuario')
+    async obtenerUsuarioPorId(
         @Param() paramParams,
         @Res() response
     ) {
-        const usuarios = await this._usuarioService.buscar(paramParams.paramBusqueda);
-        return response.send(usuarios);
+        const usuario = await this._usuarioService.obtenerUsuarioPorId(paramParams.idUsuario);
+        return response.send(usuario);
     }
-
     @Post()
     async crearUsuariosBase() {
         const usuarios = this._usuarioService.crearUsuario();

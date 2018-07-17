@@ -10,8 +10,8 @@
         <h5>Usuario</h5>
         <br>
         <mat-card>
-          <h5 style="text-align: center">Nombre Apellido</h5>
-          <img style="width: 100%; max-width: 250px" src="http://www.glitztvla.com/wp-content/uploads/2016/03/6-caminos-para-volverte-una-persona-menos-toxica.jpg" alt="Usuario Foto">
+          <h5 style="text-align: center" >{{usuario?.nombre}}</h5>
+          <img style="width: 100%; max-width: 250px" src="{{usuario?.urlImg}}" alt="Usuario Foto">
         </mat-card>
       </div>
       <div class="col-sm-9">
@@ -22,14 +22,13 @@
             <br>
             <div>
               <mat-card>
-                <div class="row">
+                <div class="row" *ngFor="let comida of listaComida">
                   <div class="col-sm-4">
-                    <img src="https://d25rq8gxcq0p71.cloudfront.net/language-guide/758/pepperoni%20pizza.jpg" alt="Usuario Foto" style="width: 100%">
+                    <img src="{{comida.urlImg}}" alt="Usuario Foto" style="width: 100%">
                   </div>
                   <div class="col-sm-8">
-                    <label>Datos</label>
-                    <br>
-                    <label>Datos</label>
+                    <h5>{{comida.nombrePlato}}</h5>
+                    <label>{{comida.descripcionPlato}}</label>
                   </div>
                 </div>
                 <!--button mat-stroked-button color="primary">Visitar</button!-->
@@ -49,12 +48,11 @@
         <mat-card>
           <div class="row">
             <div class="col-sm-5">
-              <label>Datos</label>
-              <br>
-              <label>Datos</label>
+              <h5>{{ingrediente.nombreIngrediente}}</h5>
+              <label>{{ingrediente.cantidad}}</label>
             </div>
             <div class="col-sm-7">
-              <img style="width: 100%" src="https://d25rq8gxcq0p71.cloudfront.net/language-guide/758/pepperoni%20pizza.jpg" alt="Usuario Foto">
+              <img style="width: 100%" src="{{ingrediente.urlImg}}" alt="Usuario Foto">
             </div>
           </div>
           <br>
