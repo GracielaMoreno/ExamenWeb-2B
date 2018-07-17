@@ -50,6 +50,27 @@ export class HomeComponent implements OnInit {
   }
 
   ngOnInit() {
+    this._usuarioService.getUsuarios().subscribe(
+      (result: any[]) => {
+        this.listaUsuarios =  result;
+        this.usuario_cantidadPaginas = this.obtenerCantidadPaginas(this.listaUsuarios,this.usuario_numeroItems);
+        this.usuario_listaAMostrar = this.obtenerListaAMostrar(this.listaUsuarios, this.usuario_paginaActual, this.usuario_numeroItems)
+      }
+    );
+    this._comidaServcie.getComidas().subscribe(
+      (result: any[]) => {
+        this.listaComidas = result;
+        this.comida_cantidadPaginas =  this.obtenerCantidadPaginas(this.listaComidas, this.comida_numeroItems);
+        this.comida_listaAMostrar = this.obtenerListaAMostrar(this.listaComidas, this.comida_paginaActual, this.comida_numeroItems);
+      }
+    );
+    this._ingredienteService.getIngredientes().subscribe(
+      (result: any[]) => {
+        this.listaIngredientes = result;
+        this.ingrediente_cantidadPaginas = this.obtenerCantidadPaginas(this.listaIngredientes, this.ingrediente_numeroItems);
+        this.ingrediente_listaAMostrar = this.obtenerListaAMostrar(this.listaIngredientes, this.ingrediente_paginaActual, this.ingrediente_numeroItems);
+      }
+    );
   }
   getUsuarioPorId(idUsuario) {
     this._usuarioService.getUsuarioPorId(idUsuario).subscribe(
