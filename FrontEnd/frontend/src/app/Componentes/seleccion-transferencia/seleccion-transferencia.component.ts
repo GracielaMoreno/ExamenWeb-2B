@@ -20,7 +20,7 @@ export class SeleccionTransferenciaComponent implements OnInit {
   comidas: Comida;
   itemTransferencia: Ingrediente;
   usuarioActual: Usuario;
-  usuarioDueñoItem: Usuario;
+  usuarioDuenoItem: Usuario;
 
   constructor(
     private _activatedRoute: ActivatedRoute,
@@ -74,14 +74,14 @@ export class SeleccionTransferenciaComponent implements OnInit {
   getUsuarioPorIngredienteId(idIngrediente) {
     this._ingredienteService.getIngredienteComidaYUsuario(idIngrediente).subscribe(
       (result: any) => {
-        this.usuarioDueñoItem = result[0].comidaId.usuarioId;
+        this.usuarioDuenoItem = result[0].comidaId.usuarioId;
       }
     )
   }
 
-  /*guardarPeticionDeTransferencia(idIngrediente) {
-    console.log(this.usuarioActual.id, this.usuarioDueñoItem.id, this.itemTransferencia.id, idIngrediente);
-    this._transferenciaService.crearTransferencia(this.usuarioActual.id, this.usuarioDueñoItem.id, this.itemTransferencia.id, idIngrediente);
-    console.log(this.usuarioActual.id, this.usuarioDueñoItem.id, this.itemTransferencia.id, idIngrediente);
-  }*/
+  guardarPeticionDeTransferencia(idIngrediente) {
+    this._transferenciaService.crearTransferencia(this.usuarioActual.id, this.usuarioDuenoItem.id, this.itemTransferencia.id, idIngrediente).subscribe(
+      
+    );
+  }
 }
