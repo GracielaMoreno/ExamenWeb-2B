@@ -63,6 +63,9 @@ export class IngredienteService {
     async traerIngredientePorId(idIngrediente): Promise<IngredienteEntity[]> {
         return await this.ingredienteRepository.find({where: {id: idIngrediente}});
     }
+    async obtenerUsuarioPorIngredienteId(idComida) {
+        return await this.ingredienteRepository.createQueryBuilder("ingrediente").innerJoinAndSelect("ingrediente.comidaId", "comida").innerJoinAndSelect("comida.usuarioId", "usuario").where("ingrediente.id = " + idComida).getMany();
+    }
 
     /*agregarIngrediente(ingrediente: IngredienteClass): IngredienteClass[] {
         this.arregloIngredientes.push(ingrediente);

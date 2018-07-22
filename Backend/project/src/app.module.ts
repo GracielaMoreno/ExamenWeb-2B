@@ -12,6 +12,9 @@ import {ComidaEntity} from "./Comida/comida.entity";
 import {IngredienteEntity} from "./ingrediente/ingrediente.entity";
 import {UsuarioController} from "./Usuario/usuario.controller";
 import {UsuarioService} from "./Usuario/usuario.service";
+import {TransferenciaController} from "./Transferencia/transferencia.controller";
+import {TransferenciaService} from "./Transferencia/transferencia.service";
+import {TransferenciaEntity} from "./Transferencia/transferencia.entity";
 
 @Module({
   imports: [
@@ -26,20 +29,22 @@ import {UsuarioService} from "./Usuario/usuario.service";
           synchronize: true,
           //ssl: true,
       }),
-      TypeOrmModule.forFeature([ComidaEntity,IngredienteEntity,UsuarioEntity])
+      TypeOrmModule.forFeature([ComidaEntity,IngredienteEntity,UsuarioEntity, TransferenciaEntity])
   ],
   controllers: [
       AppController,
       ComidaController,
       IngredienteController,
       AutorizacionController,
-      UsuarioController],
+      UsuarioController,
+      TransferenciaController],
   providers: [
       AppService,
       ComidaService,
       IngredienteService,
-      UsuarioService
-     ],
+      UsuarioService,
+      TransferenciaService
+  ],
 })
 
 export class AppModule {}

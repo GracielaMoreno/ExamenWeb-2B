@@ -1,4 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-barra-superior',
@@ -9,10 +10,19 @@ export class BarraSuperiorComponent implements OnInit {
 
   @Input() nombreUsuario;
   @Input() imgUsuario;
+  @Input() idusuario;
 
-  constructor() { }
+  constructor(private _router: Router) { }
 
   ngOnInit() {
   }
 
+  irAHome() {
+    const url = ['/home', this.idusuario];
+    this._router.navigate(url);
+  }
+  irAPerfil() {
+    const url = ['/perfil', this.idusuario];
+    this._router.navigate(url);
+  }
 }

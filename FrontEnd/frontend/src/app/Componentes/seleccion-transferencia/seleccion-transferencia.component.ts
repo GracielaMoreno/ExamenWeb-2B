@@ -6,12 +6,13 @@ import {IngredienteService} from "../../Servicios/ingrediente.service";
 import {UsuarioService} from "../../Servicios/usuario.service";
 import {ComidaService} from "../../Servicios/comida.service";
 import {Comida} from "../../Interfaces/comida";
+import {TransferenciaService} from "../../Servicios/transferencia.service";
 
 @Component({
   selector: 'app-seleccion-transferencia',
   templateUrl: './seleccion-transferencia.component.html',
   styleUrls: ['./seleccion-transferencia.component.css'],
-  providers: [IngredienteService, UsuarioService, ComidaService]
+  providers: [IngredienteService, UsuarioService, ComidaService, TransferenciaService]
 })
 export class SeleccionTransferenciaComponent implements OnInit {
 
@@ -19,17 +20,20 @@ export class SeleccionTransferenciaComponent implements OnInit {
   comidas: Comida;
   itemTransferencia: Ingrediente;
   usuarioActual: Usuario;
+  usuarioDueñoItem: Usuario;
 
   constructor(
     private _activatedRoute: ActivatedRoute,
     private _ingredienteService: IngredienteService,
     private _usuarioService: UsuarioService,
-    private _comidaService: ComidaService
+    private _comidaService: ComidaService,
+    private _transferenciaService: TransferenciaService
   ) {
     this._activatedRoute.params.subscribe(
       params =>{
         this.getUsuarioActualPorId(params['idUsuarioActual']);
         this.getIngredientepoId(params['idIngrediente']);
+        this.getUsuarioPorIngredienteId(params['idIngrediente']);
         this.getComidadeUsuario(params['idUsuarioActual'])
       });
   }
@@ -67,4 +71,17 @@ export class SeleccionTransferenciaComponent implements OnInit {
       }
     )
   }
+  getUsuarioPorIngredienteId(idIngrediente) {
+    this._ingredienteService.getIngredienteComidaYUsuario(idIngrediente).subscribe(
+      (result: any) => {
+        this.usuarioDueñoItem = result[0].comidaId.usuarioId;
+      }
+    )
+  }
+
+  /*guardarPeticionDeTransferencia(idIngrediente) {
+    console.log(this.usuarioActual.id, this.usuarioDueñoItem.id, this.itemTransferencia.id, idIngrediente);
+    this._transferenciaService.crearTransferencia(this.usuarioActual.id, this.usuarioDueñoItem.id, this.itemTransferencia.id, idIngrediente);
+    console.log(this.usuarioActual.id, this.usuarioDueñoItem.id, this.itemTransferencia.id, idIngrediente);
+  }*/
 }

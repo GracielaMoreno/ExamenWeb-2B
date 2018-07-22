@@ -1,5 +1,6 @@
 import {Column, Entity, ManyToOne, OneToMany, PrimaryGeneratedColumn} from "typeorm";
 import {ComidaEntity} from "../Comida/comida.entity";
+import {TransferenciaEntity} from "../Transferencia/transferencia.entity";
 
 @Entity('usuario')
 export class UsuarioEntity {
@@ -20,4 +21,14 @@ export class UsuarioEntity {
         type => ComidaEntity,
         comida => comida.usuarioId)
     comidas: ComidaEntity [];
+
+    @OneToMany(
+        type => TransferenciaEntity,
+        transferencia => transferencia.usuarioPide)
+    peticionesRealizadas: TransferenciaEntity [];
+
+    @OneToMany(
+        type => TransferenciaEntity,
+        transferencia => transferencia.usuarioOfrece)
+    peticionesRecibidas: TransferenciaEntity [];
 }

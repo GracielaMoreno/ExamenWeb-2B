@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {ActivatedRoute} from "@angular/router";
+import {ActivatedRoute, Router} from "@angular/router";
 import {ComidaService} from "../../Servicios/comida.service";
 import {UsuarioService} from "../../Servicios/usuario.service";
 import {IngredienteService} from "../../Servicios/ingrediente.service";
@@ -21,7 +21,8 @@ export class PeticionTransferenciaComponent implements OnInit {
   constructor(private _activatedRoute: ActivatedRoute,
               private _comidaService: ComidaService,
               private _usuarioService: UsuarioService,
-              private _ingredienteService: IngredienteService
+              private _ingredienteService: IngredienteService,
+              private _router: Router
   ) {
     this._activatedRoute.params.subscribe(
       params =>{
@@ -60,5 +61,13 @@ export class PeticionTransferenciaComponent implements OnInit {
         this.listaIngredientes = result;
       }
     )
+  }
+  irASeleccionTransferencia(idIngrediente: string) {
+    this._activatedRoute.params.subscribe(
+      params =>{
+        const url = ['/selecTransf', params['idUsuarioActual'],idIngrediente];
+        this._router.navigate(url);
+      }
+    );
   }
 }
