@@ -80,8 +80,6 @@ export class SeleccionTransferenciaComponent implements OnInit {
   }
 
   guardarPeticionDeTransferencia(idIngrediente) {
-    this._transferenciaService.crearTransferencia(this.usuarioActual.id, this.usuarioDuenoItem.id, this.itemTransferencia.id, idIngrediente).subscribe(
-      
-    );
+    this._transferenciaService.crearTransferencia(this.usuarioActual.id, this.usuarioDuenoItem.id, this.itemTransferencia.id, idIngrediente).subscribe();
   }
 }
