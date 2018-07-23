@@ -66,7 +66,6 @@ export class IngredienteService {
     async obtenerUsuarioPorIngredienteId(idComida) {
         return await this.ingredienteRepository.createQueryBuilder("ingrediente").innerJoinAndSelect("ingrediente.comidaId", "comida").innerJoinAndSelect("comida.usuarioId", "usuario").where("ingrediente.id = " + idComida).getMany();
     }
-
     /*agregarIngrediente(ingrediente: IngredienteClass): IngredienteClass[] {
         this.arregloIngredientes.push(ingrediente);
         return this.arregloIngredientes;

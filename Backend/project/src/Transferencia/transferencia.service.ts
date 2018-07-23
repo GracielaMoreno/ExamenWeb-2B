@@ -66,6 +66,7 @@ export class TransferenciaService {
         let transferencias = await this.transferenciaRepository.createQueryBuilder("transferencia").innerJoinAndSelect("transferencia.ingredientePedido", "ingredienteP").innerJoinAndSelect("transferencia.ingredienteOfertado", "ingredienteO").innerJoinAndSelect("transferencia.usuarioPide", "usuario").where("transferencia.usuarioOfrece = " + usuarioID).getMany();
         return transferencias;
     }
+
     /*async buscar(parametroBusqueda) {
     return await this.comidaRepository.find({ nombrePlato: Like("%" + parametroBusqueda + "%") });
     }
