@@ -1,4 +1,4 @@
-<app-barra-superior></app-barra-superior>
+<app-barra-superior [imgUsuario]="usuarioActual?.urlImg" [nombreUsuario]="usuarioActual?.nombre" [idusuario]="usuarioActual?.id"></app-barra-superior>
 <br>
 <div class="row">
   <div class="col-sm-1"></div>
@@ -10,8 +10,8 @@
         <h5>Usuario</h5>
         <br>
         <mat-card>
-          <h5 style="text-align: center">Nombre Apellido</h5>
-          <img style="width: 100%; max-width: 250px" src="http://www.glitztvla.com/wp-content/uploads/2016/03/6-caminos-para-volverte-una-persona-menos-toxica.jpg" alt="Usuario Foto">
+          <h5 style="text-align: center">{{usuarioActual?.nombre}}</h5>
+          <img style="width: 100%; max-width: 250px" src="{{usuarioActual?.urlImg}}" alt="Usuario Foto">
         </mat-card>
       </div>
       <div class="col-sm-9"></div>
@@ -28,13 +28,13 @@
             <div class="col-sm-1"></div>
             <div class="col-sm-3">
               <mat-card>
-                <label style="text-align: center">Nombre</label>
-                <img style="width: 100%; max-width: 250px" src="http://www.glitztvla.com/wp-content/uploads/2016/03/6-caminos-para-volverte-una-persona-menos-toxica.jpg" alt="Usuario Foto">
+                <label style="text-align: center">{{usuarioActual.nombre}}</label>
+                <img style="width: 100%; max-width: 250px" src="{{usuarioActual.urlImg}}" alt="Usuario Foto">
               </mat-card>
             </div>
             <div class="col-sm-4"></div>
             <div class="col-sm-3">
-              <h5>En Espera</h5>
+              <h5>{{peticion.estado}}</h5>
             </div>
             <div class="col-sm-1"></div>
           </div>
@@ -45,9 +45,9 @@
               <mat-card>
                 <div class="row">
                   <div class="col-sm-6">
-                    <label>Datos</label>
+                    <h5>{{peticion.ingredienteOfertado.nombreIngrediente}}</h5>
                     <br>
-                    <label>Datos</label>
+                    <label>Cant: {{peticion.ingredienteOfertado.cantidad}}</label>
                   </div>
                   <div class="col-sm-6">
                     <img style="width: 100%" src="https://d25rq8gxcq0p71.cloudfront.net/language-guide/758/pepperoni%20pizza.jpg" alt="Usuario Foto">
@@ -64,9 +64,9 @@
               <mat-card>
                 <div class="row">
                   <div class="col-sm-6">
-                    <label>Datos</label>
+                    <h5>{{peticion.ingredientePedido.nombreIngrediente}}</h5>
                     <br>
-                    <label>Datos</label>
+                    <label>Cant: {{peticion.ingredientePedido.cantidad}}</label>
                   </div>
                   <div class="col-sm-6">
                     <img style="width: 100%" src="https://d25rq8gxcq0p71.cloudfront.net/language-guide/758/pepperoni%20pizza.jpg" alt="Usuario Foto">
@@ -100,7 +100,7 @@
             <div class="col-sm-4"></div>
             <div class="col-sm-3">
               <mat-card>
-                <label style="text-align: center">Nombre</label>
+                <label style="text-align: center">{{peticion.usuarioPide.nombre}}</label>
                 <img style="width: 100%; max-width: 250px" src="http://www.glitztvla.com/wp-content/uploads/2016/03/6-caminos-para-volverte-una-persona-menos-toxica.jpg" alt="Usuario Foto">
               </mat-card>
             </div>
@@ -113,9 +113,9 @@
               <mat-card>
                 <div class="row">
                   <div class="col-sm-6">
-                    <label>Datos</label>
+                    <h5>{{peticion.ingredientePedido.nombreIngrediente}}</h5>
                     <br>
-                    <label>Datos</label>
+                    <label>Cant: {{peticion.ingredientePedido.cantidad}}</label>
                   </div>
                   <div class="col-sm-6">
                     <img style="width: 100%" src="https://d25rq8gxcq0p71.cloudfront.net/language-guide/758/pepperoni%20pizza.jpg" alt="Usuario Foto">
@@ -132,9 +132,9 @@
               <mat-card>
                 <div class="row">
                   <div class="col-sm-6">
-                    <label>Datos</label>
+                    <h5>{{peticion.ingredienteOfertado.nombreIngrediente}}</h5>
                     <br>
-                    <label>Datos</label>
+                    <label>Cant: {{peticion.ingredienteOfertado.cantidad}}</label>
                   </div>
                   <div class="col-sm-6">
                     <img style="width: 100%" src="https://d25rq8gxcq0p71.cloudfront.net/language-guide/758/pepperoni%20pizza.jpg" alt="Usuario Foto">

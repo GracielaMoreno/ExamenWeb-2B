@@ -1,8 +1,18 @@
 <mat-toolbar color="primary" style="height: 50px">
+   <span>
+    <button mat-icon-button (click)="irAHome()">
+      <mat-icon style="">home</mat-icon>
+    </button>
+</span>
   <span style="flex: 4 1 auto"></span>
   <span style=" padding-right: 20px">
     <img src="{{imgUsuario}}" alt="Usuario">
   </span>
-  <span>{{nombreUsuario}}</span>
+  <span>
+    <button mat-raised-button color="primary" class="mat-elevation-z0" (click)="irAPerfil()">
+      {{nombreUsuario}}
+    </button>
+
+  </span>
 </mat-toolbar>
 

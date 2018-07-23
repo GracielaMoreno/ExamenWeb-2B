@@ -41,7 +41,14 @@ export class IngredienteController {
         const ingrediente = await this._ingredienteService.traerIngredientePorId(paramParams.idIngrediente);
         return response.send(ingrediente);
     }
-
+    @Get('suUsuario/:idIngrediente')
+    async obtenerUsuarioPorIdComida(
+        @Param() paramParams,
+        @Res() response
+    ) {
+        const usuario = await this._ingredienteService.obtenerUsuarioPorIngredienteId(paramParams.idIngrediente);
+        return response.send(usuario);
+    }
     @Post()
     async crearIngredientesBase() {
         const ingredientes = this._ingredienteService.crearIngredientes();
