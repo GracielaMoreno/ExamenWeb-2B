@@ -32,13 +32,18 @@
     <br>
     <div class="row">
       <div *ngFor="let usuario of usuario_listaAMostrar" class="col-sm-3" style="width: 100%">
-        <mat-card style="height: 100%">
-          <h5>{{usuario.nombre}}</h5>
-          <img style="width: 100%; max-width: 300px;" src="{{usuario.urlImg}}" alt="Usuario Foto">
-          <mat-card-actions>
-            <button style="width: 100%" mat-stroked-button color="primary" (click)="irAPeticionesDeTransferencia(usuario.id)">Visitar</button>
-          </mat-card-actions>
-        </mat-card>
+        <div class="animated flipInY">
+          <mat-card style="height: 100%">
+            <h5>{{usuario.nombre}}</h5>
+            <div class="container">
+              <img style="width: 100%; max-width: 300px;" src="{{usuario.urlImg}}" alt="Usuario Foto">
+              <div class="overlay">Mi nombre es: {{usuario.nombre}}</div>
+            </div>
+            <mat-card-actions>
+              <button style="width: 100%" mat-stroked-button color="primary" (click)="irAPeticionesDeTransferencia(usuario.id)">Visitar</button>
+            </mat-card-actions>
+          </mat-card>
+        </div>
         <br>
       </div>
     </div>
@@ -67,19 +72,21 @@
     <br>
     <div class="row">
       <div *ngFor="let comida of comida_listaAMostrar" class="col-sm-6" style="width: 100%">
-        <mat-card>
-          <div class="row">
-            <div class="col-sm-4">
-              <img style="width: 100%; max-width: 300px;" src="{{comida.urlImg}}" alt="Usuario Foto">
+        <div class="animated wobble">
+          <mat-card>
+            <div class="row">
+              <div class="col-sm-4">
+                <img style="width: 100%; max-width: 300px;" src="{{comida.urlImg}}" alt="Usuario Foto">
+              </div>
+              <div class="col-sm-8">
+                <h5>{{comida.nombrePlato}}</h5>
+                <label>Descripción: {{comida.descripcionPlato}}</label>
+                <br>
+                <label>Nacionalidad: {{comida.nacionalidad}}</label>
+              </div>
             </div>
-            <div class="col-sm-8">
-              <h5>{{comida.nombrePlato}}</h5>
-              <label>Descripción: {{comida.descripcionPlato}}</label>
-              <br>
-              <label>Nacionalidad: {{comida.nacionalidad}}</label>
-            </div>
-          </div>
-        </mat-card>
+          </mat-card>
+        </div>
         <br>
       </div>
     </div>
@@ -108,18 +115,20 @@
     <br>
     <div class="row">
       <div *ngFor="let ingrediente of ingrediente_listaAMostrar" class="col-sm-3" style="width: 100%">
-        <mat-card>
-          <div class="row">
-            <div class="col-sm-6">
-              <h5>{{ingrediente.nombreIngrediente}}</h5>
-              <label>Cant: {{ingrediente.cantidad}}</label>
+        <div class="animated rubberBand">
+          <mat-card>
+            <div class="row">
+              <div class="col-sm-6">
+                <h5>{{ingrediente.nombreIngrediente}}</h5>
+                <label>Cant: {{ingrediente.cantidad}}</label>
+              </div>
+              <div class="col-sm-6">
+                <img style=" width: 100%; max-width: 400px;" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSDBVlYWFoyYUgo29IPKCyEQa4rqCUFqlUuoQ4Aautiu__yrX96" alt="Usuario Foto">
+              </div>
             </div>
-            <div class="col-sm-6">
-              <img style=" width: 100%; max-width: 400px;" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSDBVlYWFoyYUgo29IPKCyEQa4rqCUFqlUuoQ4Aautiu__yrX96" alt="Usuario Foto">
-            </div>
-          </div>
-          <button mat-stroked-button color="primary" (click)="irASeleccionTransferencia(ingrediente.id)">Pedir Transfrencia</button>
-        </mat-card>
+            <button mat-stroked-button color="primary" (click)="irASeleccionTransferencia(ingrediente.id)">Pedir Transfrencia</button>
+          </mat-card>
+        </div>
         <br>
       </div>
     </div>
